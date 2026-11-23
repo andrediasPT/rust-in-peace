@@ -71,7 +71,8 @@ def grafico_probabilidades(prob, classes, legiveis):
     df['Texto'] = (100 * df['Probabilidade']).map(lambda v: f'{v:.1f}%')
     base = alt.Chart(df).encode(
         y=alt.Y('Classe:N', sort='-x', title=None),
-        x=alt.X('Probabilidade:Q', scale=alt.Scale(domain=[0, 1]), axis=alt.Axis(format='%'), title=None),
+        x=alt.X('Probabilidade:Q', scale=alt.Scale(domain=[0, 1.18]),
+                axis=alt.Axis(format='%', values=[0, 0.25, 0.5, 0.75, 1]), title=None),
         tooltip=['Classe', alt.Tooltip('Probabilidade:Q', format='.1%')])
     barras = base.mark_bar(cornerRadiusEnd=4, height=18).encode(
         color=alt.condition('datum.Prevista', alt.value('#2a78d6'), alt.value('#b9cfee')))
@@ -146,8 +147,9 @@ for f in ficheiros:
     with col_img:
         st.image(imagem, caption=f'{f.name} ({imagem.width}×{imagem.height})', use_container_width=True)
     with col_res:
-        st.metric('Classe prevista', LEGIVEIS.get(classe, classe), f'{conf:.1%} de confiança',
-                  delta_color='off')
+        st.caption('Classe prevista')
+        st.markdown(f"### {LEGIVEIS.get(classe, classe)}")
+        st.markdown(f"**{conf:.1%}** de confiança")
         if conf < LIMIAR_CONFIANCA:
             seg = int(np.argsort(prob)[-2])
             st.warning(f'Confiança baixa: o modelo hesita entre **{LEGIVEIS.get(classe, classe)}** e '
