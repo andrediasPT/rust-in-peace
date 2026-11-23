@@ -1,0 +1,18 @@
+{
+  "classes": [
+    "Amolgadela",
+    "Farol_Partido",
+    "Peca_em_Falta",
+    "Rasgao",
+    "Risco",
+    "Vidro_Partido"
+  ],
+  "nomes_legiveis": {
+    "Amolgadela": "Amolgadela",
+    "Farol_Partido": "Farol partido",
+    "Peca_em_Falta": "Peça em falta",
+    "Rasgao": "Rasgão",
+    "Risco": "Risco",
+    "Vidro_Partido": "Vidro partido"
+  }
+}

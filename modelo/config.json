@@ -1,0 +1,43 @@
+{
+  "tamanho_imagem": 224,
+  "preprocessamento": "RGB, correcao EXIF, resize bilinear para 224x224, pixeis 0-255 (float32); a normalizacao da arquitetura esta dentro do modelo",
+  "backbone": "MobileNetV3Large",
+  "balanceamento": "oversampling",
+  "hp_topo": {
+    "unidades": 512,
+    "dropout": 0.5,
+    "lr": 0.0005,
+    "batch": 128,
+    "l2": 0.0001,
+    "ativacao": "relu",
+    "camadas": 1
+  },
+  "n_treino": 11616,
+  "fine_tuning_testado": true,
+  "fine_tuning_mantido": true,
+  "acc_val_sem_ft": 0.6962,
+  "tempo_ft_s": 327.4,
+  "parametros_treinaveis_ft": 2057510,
+  "acc_val_com_ft": 0.7002,
+  "metricas_teste": {
+    "Accuracy": 0.6975,
+    "Erro_padrao_acc": 0.0096,
+    "IC95_inf": 0.6787,
+    "IC95_sup": 0.7163,
+    "Precisao_macro": 0.6999,
+    "Sensibilidade_macro": 0.6921,
+    "Especificidade_macro": 0.9389,
+    "F1_macro": 0.6941,
+    "Precisao_ponderada": 0.6987,
+    "Sensibilidade_ponderada": 0.6975,
+    "F1_ponderado": 0.6962,
+    "AUC_macro_ovr": 0.9229,
+    "Kappa_Cohen": 0.6347,
+    "N_imagens": 2291
+  },
+  "parametros_total": 3491462,
+  "latencia_1_imagem_ms": 99.2,
+  "versao_tensorflow": "2.18.1",
+  "versao_keras": "3.15.1",
+  "data": "2026-11-23 19:17"
+}
